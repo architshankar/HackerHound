@@ -166,16 +166,27 @@
             const bulbControls = document.getElementById("bulbControls");
             bulbControls.style.display = "block";
         }
+        function hideBulbControls() {
+            const bulbControls = document.getElementById("bulbControls");
+            bulbControls.style.display = "none";
+        }
 
         function toggleBulb() {
             const bulbSwitch = document.getElementById("bulbSwitch");
             if (bulbSwitch.checked) {
                 alert("Bulb turned on");
+                // If the bulb is turned on, show the bulb controls
+                showBulbControls();
+                // Update the bulb status to 1 (on)
+                updateBulbStatus(1);
             } else {
                 alert("Bulb turned off");
+                // If the bulb is turned off, hide the bulb controls
+                hideBulbControls();
+                // Update the bulb status to 0 (off)
+                updateBulbStatus(0);
             }
         }
-
         function showLedControls() {
             hideAllControls();
             const ledControls = document.getElementById("ledControls");
