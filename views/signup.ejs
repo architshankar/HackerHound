@@ -130,6 +130,13 @@
             line-height: 1rem;
             color: rgba(156, 163, 175, 1);
         }
+        
+        .outerdiv{
+            margin-top: 10vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -149,28 +156,28 @@
         </form>
        
     </div> -->
-
-    <div class="form-container">
-        <p class="title">Login</p>
-        <form class="form" action="/signup" method="post">
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="Enter username..">
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Password">
-                <div class="forgot">
-                    <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
+    <div class="outerdiv">
+        <div class="form-container">
+            <p class="title">Register</p>
+            <form class="form" action="/signup" method="post">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Enter username..">
                 </div>
-            </div>
-            <button class="sign">Sign in</button>
-        </form>
-
-        <p class="signup">Don't have an account?
-            <a rel="noopener noreferrer" href="#" class="">Sign up</a>
-        </p>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Password">
+                    
+                </div>
+                <button class="sign">Sign in</button>
+            </form>
+    
+            <p class="signup">Don't have an account?
+                <a rel="noopener noreferrer" href="#" class="">Sign up</a>
+            </p>
+        </div>
     </div>
+    
 </body>
 
 </html>
