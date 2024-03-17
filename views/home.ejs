@@ -131,7 +131,7 @@
 }
 
 function updateBulbStatus(status) {
-    // Check if status is valid (0 or 1)
+   
     if (status !== 0 && status !== 1) {
         console.error('Invalid status. Status must be 0 or 1.');
         return;
@@ -140,7 +140,7 @@ function updateBulbStatus(status) {
     const data = {
         teamid: "GKSzNHE",
         device: "bulb",
-        value: status.toString() // Convert status to string
+        value: status.toString() 
     };
 
     const options = {
@@ -151,7 +151,46 @@ function updateBulbStatus(status) {
         body: JSON.stringify(data)
     };
 
-    const apiUrl = 'https://kodessphere-api.vercel.app/devices/'; // Replace with your API endpoint URL
+    const apiUrl = 'https://kodessphere-api.vercel.app/devices/'; 
+
+    fetch(apiUrl, options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Response:', data);
+           
+        })
+        .catch(error => {
+            console.error('Error:', error);
+           
+        });
+}
+function updateLed(hexValue) {
+    // Check if hexValue is a valid hexadecimal color value
+    if (!/^#([0-9A-F]{3}){1,2}$/i.test(hexValue)) {
+        console.error('Invalid hex value. Please provide a valid hexadecimal color value.');
+        return;
+    }
+
+    const data = {
+        teamid: "GKSzNHE",
+        device: "led",
+        value: hexValue // Hexadecimal color value
+    };
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+
+    const apiUrl = 'https://kodessphere-api.vercel.app/devices/'; 
 
     fetch(apiUrl, options)
         .then(response => {
@@ -169,6 +208,60 @@ function updateBulbStatus(status) {
             // Handle errors here
         });
 }
+
+function updateAC(temp, state) {
+    // Check if temperature is a valid number and state is either 0 or 1
+    if (typeof temp !== 'number' || !Number.isInteger(temp) || temp < 0 || temp > 100) {
+        console.error('Invalid temperature. Please provide a valid integer temperature value between 0 and 100.');
+        return;
+    }
+
+    if (state !== 0 && state !== 1) {
+        console.error('Invalid state. Please provide either 0 (off) or 1 (on).');
+        return;
+    }
+
+    const data = {
+        teamid: "GKSzNHE",
+        device: "AC",
+        value: {
+            temp: temp, // Temperature value
+            state: state // AC state (0 for off, 1 for on)
+        }
+    };
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+
+    const apiUrl = 'https://kodessphere-api.vercel.app/devices/'; 
+
+    fetch(apiUrl, options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Response:', data);
+            
+        })
+        .catch(error => {
+            console.error('Error:', error);
+           
+        });
+}
+
+
+updateAC(25, 1); 
+
+updateLed('#FF0000'); 
+
 
 
 updateBulbStatus(1); 
