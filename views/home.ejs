@@ -5,449 +5,1056 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hover Enlarge Icons</title>
-    <script src="https://kit.fontawesome.com/754b61fcf3.js" crossorigin="anonymous"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            position: relative;
-            height: 100vh;
             margin: 0;
+            padding: 0;
+            font-family: sans-serif;
         }
 
-        .icon-container {
+        .container {
             display: flex;
-            justify-content: space-around;
+            flex-direction: row;
+        }
+
+        .bento-flex {
+            border: 1px solid #c5a9a9;
+            /* Basic border for each item */
+            padding: 15px;
+            height: 100vh;
+            width: 50vw;
+        }
+
+        .bento-flex2 {
+            border: 1px solid #a39191;
+            /* Basic border for each item */
+            padding: 15px;
+            height: 100vh;
+            width: 50vw;
+        }
+
+        .item1 {
+            background-color: #faf6ee;
+            height: 60vh;
+            border-radius: 20px;
+        }
+
+        .item2 {
+            background: rgb(6, 106, 255);
+            height: 40vh;
+            border-radius: 20px;
+            margin-top: 15px;
+
+        }
+
+        .item3 {
+            background-color: rgb(37, 37, 37);
+            height: 37vh;
+            border-radius: 20px;
+            display: flex;
             align-items: center;
-            width: 300px;
-            margin: auto;
-            margin-top: 50px;
+            justify-content: center;
+            padding: 10px;
+
         }
 
-        .icon {
-            font-size: 2rem;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .icon:hover {
-            cursor: pointer;
-            transform: scale(1.2);
-        }
-
-        .icon-container {
+        .item4 {
             display: flex;
-            gap: 50px;
+            background-color: antiquewhite;
+            height: 90vh;
+            border-radius: 20px;
+            margin-top: 15px;
+            align-items: flex-end;
+            justify-content: center;
+
         }
 
-        header {
+
+
+
+
+
+        /* SWITCH
+--------------------------------------------- */
+
+        .container .origin {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 2rem;
-            font-weight: bold;
-            z-index: 1;
+            left: 50%;
+            top: 50%;
+            z-index: 111;
+            width: 2px;
+            height: 2px;
+            margin: -1px 0 0 -1px;
+            background-color: #f50;
         }
 
-        footer {
-            position: fixed;
-            bottom: 0;
+        .de {
+            user-select: none;
+            position: relative;
+            width: 230px;
+            height: 230px;
+            border-radius: 100%;
+            box-shadow: 0 0 25px rgba(0, 0, 0, .1);
+            background-color: transparent;
+        }
+
+        .de .den,
+        .de .dene,
+        .de .denem,
+        .de .deneme,
+        .de .light,
+        .de .dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        }
+
+        .den {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: -110px 0 0 -110px;
+            border-radius: 100%;
+            box-shadow: inset 0 3px 10px rgba(0, 0, 0, .6), 0 2px 20px rgba(255, 255, 255, 1);
+            background: #888888;
+            background: -moz-radial-gradient(center, ellipse cover, #888888 0%, #333333 100%);
+            background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #888888), color-stop(100%, #333333));
+            background: -webkit-radial-gradient(center, ellipse cover, #888888 0%, #333333 100%);
+            background: -o-radial-gradient(center, ellipse cover, #888888 0%, #333333 100%);
+        }
+
+        .dene {
+            z-index: 4;
+            width: 140px;
+            height: 140px;
+            margin: -70px 0 0 -70px;
+            border-radius: 100%;
+            box-shadow: inset 0 2px 2px rgba(255, 255, 255, .4), 0 3px 13px rgba(0, 0, 0, .85);
+            background: #f2f6f5;
+            background: -moz-linear-gradient(top, #f2f6f5 0%, #cbd5d6 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f6f5), color-stop(100%, #cbd5d6));
+            background: -webkit-linear-gradient(top, #f2f6f5 0%, #cbd5d6 100%);
+            background: -o-linear-gradient(top, #f2f6f5 0%, #cbd5d6 100%);
+        }
+
+        .denem {
+            width: 120px;
+            height: 120px;
+            margin: -60px 0 0 -60px;
+            border-radius: 100%;
+            background: #cbd5d6;
+            background: -moz-linear-gradient(top, #cbd5d6 0%, #f2f6f5 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cbd5d6), color-stop(100%, #f2f6f5));
+            background: -webkit-linear-gradient(top, #cbd5d6 0%, #f2f6f5 100%);
+            background: -o-linear-gradient(top, #cbd5d6 0%, #f2f6f5 100%);
+        }
+
+        .deneme {
+            width: 100px;
+            height: 100px;
+            margin: -50px 0 0 -50px;
+            border-radius: 100%;
+            box-shadow: inset 0 2px 3px rgba(255, 255, 255, .6), 0 8px 20px rgba(0, 0, 0, .9);
+            background: #eef7f6;
+            background: -moz-linear-gradient(top, #eef7f6 0%, #8d989a 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eef7f6), color-stop(100%, #8d989a));
+            background: -webkit-linear-gradient(top, #eef7f6 0%, #8d989a 100%);
+            background: -o-linear-gradient(top, #eef7f6 0%, #8d989a 100%);
+        }
+
+        .den .switch {
+            z-index: 3;
+            position: absolute;
+            top: 0;
             left: 0;
             width: 100%;
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
+            height: 100%;
+        }
+
+        .den .switch label {
+            z-index: 2;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            height: 70px;
+            margin-top: -35px;
+            transform-origin: 0% 50%;
+            -webkit-transform-origin: 0% 50%;
+            -o-transform-origin: 0% 50%;
+        }
+
+        .den .switch label:after {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 1px;
+            width: 100%;
+            height: 30px;
+            transform: rotate(-30deg);
+            -webkit-transform: rotate(-30deg);
+            -o-transform: rotate(-30deg);
+        }
+
+        .den .switch label:before {
+            content: "";
+            position: absolute;
+            bottom: 6px;
+            left: 1px;
+            width: 100%;
+            height: 30px;
+            transform: rotate(30deg);
+            -webkit-transform: rotate(30deg);
+            -o-transform: rotate(30deg);
+        }
+
+        .den .switch label span {
+            z-index: 2;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 100%;
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 70px;
+            text-align: center;
+            color: #eee;
+            text-shadow: 0 1px 0 #444;
+        }
+
+        .den .switch label:nth-child(1) {
+            transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+        }
+
+        .den .switch label:nth-child(1) span {
+            right: 2px;
+            font-size: 13px;
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+        }
+
+        .den .switch label:nth-child(2) {
+            transform: rotate(-30deg);
+            -webkit-transform: rotate(-30deg);
+            -o-transform: rotate(-30deg);
+        }
+
+        .den .switch label:nth-child(2) span {
+            transform: rotate(30deg);
+            -webkit-transform: rotate(30deg);
+            -o-transform: rotate(30deg);
+        }
+
+        .den .switch label:nth-child(3) {
+            transform: rotate(30deg);
+            -webkit-transform: rotate(30deg);
+            -o-transform: rotate(30deg);
+        }
+
+        .den .switch label:nth-child(3) span {
+            transform: rotate(-30deg);
+            -webkit-transform: rotate(-30deg);
+            -o-transform: rotate(-30deg);
+        }
+
+        .den .switch label:nth-child(4) {
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+        }
+
+        .den .switch label:nth-child(4) span {
+            transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+        }
+
+        .den .switch label:nth-child(5) {
+            transform: rotate(150deg);
+            -webkit-transform: rotate(150deg);
+            -o-transform: rotate(150deg);
+        }
+
+        .den .switch label:nth-child(5) span {
+            transform: rotate(-150deg);
+            -webkit-transform: rotate(-150deg);
+            -o-transform: rotate(-150deg);
+        }
+
+        .den .switch label:nth-child(6) {
+            transform: rotate(210deg);
+            -webkit-transform: rotate(210deg);
+            -o-transform: rotate(210deg);
+        }
+
+        .den .switch label:nth-child(6) span {
+            transform: rotate(-210deg);
+            -webkit-transform: rotate(-210deg);
+            -o-transform: rotate(-210deg);
+        }
+
+        .den .switch input {
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* SWITCH LIGHT */
+
+        .den .light {
+            z-index: 1;
+            width: 50%;
+            height: 100px;
+            margin-top: -50px;
+            transform-origin: 0% 50%;
+            -webkit-transform-origin: 0% 50%;
+            -o-transform-origin: 0% 50%;
+            transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            -webkit-transition: all .5s;
+            transition: all .5s;
+            -o-transition: all .5s;
+        }
+
+        .den .light span {
+            opacity: .4;
+            position: absolute;
+            top: 0;
+            left: 15px;
+            width: 100px;
+            height: 100px;
+            background: -moz-radial-gradient(center, ellipse cover, rgba(184, 163, 204, 1) 0%, rgba(159, 197, 224, 0.42) 42%, rgba(111, 113, 179, 0) 72%, rgba(67, 34, 137, 0) 100%);
+            background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(184, 163, 204, 1)), color-stop(42%, rgba(159, 197, 224, 0.42)), color-stop(72%, rgba(111, 113, 179, 0)), color-stop(100%, rgba(67, 34, 137, 0)));
+            background: -webkit-radial-gradient(center, ellipse cover, rgba(184, 163, 204, 1) 0%, rgba(159, 197, 224, 0.42) 42%, rgba(111, 113, 179, 0) 72%, rgba(67, 34, 137, 0) 100%);
+            background: -o-radial-gradient(center, ellipse cover, rgba(184, 163, 204, 1) 0%, rgba(159, 197, 224, 0.42) 42%, rgba(111, 113, 179, 0) 72%, rgba(67, 34, 137, 0) 100%);
+        }
+
+        /* SWITCH LIGHT POSITION */
+
+        .den #switch_off:checked~.light {
+            transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+        }
+
+        .den #switch_1:checked~.light {
+            transform: rotate(-30deg);
+            -webkit-transform: rotate(-30deg);
+            -o-transform: rotate(-30deg);
+        }
+
+        .den #switch_2:checked~.light {
+            transform: rotate(30deg);
+            -webkit-transform: rotate(30deg);
+            -o-transform: rotate(30deg);
+        }
+
+        .den #switch_3:checked~.light {
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+        }
+
+        .den #switch_4:checked~.light {
+            transform: rotate(150deg);
+            -webkit-transform: rotate(150deg);
+            -o-transform: rotate(150deg);
+        }
+
+        .den #switch_5:checked~.light {
+            transform: rotate(210deg);
+            -webkit-transform: rotate(210deg);
+            -o-transform: rotate(210deg);
+        }
+
+        /* SWITCH LIGHT */
+
+        .den .dot {
+            z-index: 6;
+            width: 50%;
+            height: 12px;
+            margin-top: -6px;
+            transform-origin: 0% 50%;
+            -webkit-transform-origin: 0% 50%;
+            -o-transform-origin: 0% 50%;
+            transition: all .5s;
+            -moz-transition: all .5s;
+            -o-transition: all .5s;
+        }
+
+        .den .dot span {
+            position: absolute;
+            top: 0;
+            left: 30px;
+            width: 12px;
+            height: 12px;
+            border-radius: 100%;
+            background: #dae2e4;
+            background: -moz-linear-gradient(top, #dae2e4 0%, #ecf5f4 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dae2e4), color-stop(100%, #ecf5f4));
+            background: -webkit-linear-gradient(top, #dae2e4 0%, #ecf5f4 100%);
+            background: -o-linear-gradient(top, #dae2e4 0%, #ecf5f4 100%);
+        }
+
+        /* SWITCH LIGHT POSITION */
+
+        .den #switch_off:checked~.dot {
+            transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+        }
+
+        .den #switch_off:checked~.dot span {
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+        }
+
+        .den #switch_1:checked~.dot {
+            transform: rotate(-30deg);
+            -webkit-transform: rotate(-30deg);
+            -o-transform: rotate(-30deg);
+        }
+
+        .den #switch_1:checked~.dot span {
+            opacity: .9;
+            transform: rotate(30deg);
+            -webkit-transform: rotate(30deg);
+            -o-transform: rotate(30deg);
+        }
+
+        .den #switch_2:checked~.dot {
+            transform: rotate(30deg);
+            -webkit-transform: rotate(30deg);
+            -o-transform: rotate(30deg);
+        }
+
+        .den #switch_2:checked~.dot span {
+            opacity: .5;
+            transform: rotate(-30deg);
+            -webkit-transform: rotate(-30deg);
+            -o-transform: rotate(-30deg);
+        }
+
+        .den #switch_3:checked~.dot {
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+        }
+
+        .den #switch_3:checked~.dot span {
+            opacity: .4;
+            transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+        }
+
+        .den #switch_4:checked~.dot {
+            transform: rotate(150deg);
+            -webkit-transform: rotate(150deg);
+            -o-transform: rotate(150deg);
+        }
+
+        .den #switch_4:checked~.dot span {
+            opacity: .5;
+            transform: rotate(-150deg);
+            -webkit-transform: rotate(-150deg);
+            -o-transform: rotate(-150deg);
+        }
+
+        .den #switch_5:checked~.dot {
+            transform: rotate(210deg);
+            -webkit-transform: rotate(210deg);
+            -o-transform: rotate(210deg);
+        }
+
+        .den #switch_5:checked~.dot span {
+            opacity: .9;
+            transform: rotate(-210deg);
+            -webkit-transform: rotate(-210deg);
+            -o-transform: rotate(-210deg);
+        }
+
+        /* LINE */
+
+        .den hr.line {
+            z-index: 1;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            height: 0;
+            margin-top: -1px;
+            border-width: 1px 0;
+            border-style: solid;
+            border-top-color: #3c3d3f;
+            border-bottom-color: #666769;
+        }
+
+        .den hr.line:nth-child(1) {
+            transform: rotate(-60deg);
+            -webkit-transform: rotate(-60deg);
+            -o-transform: rotate(-60deg);
+        }
+
+        .den hr.line:nth-child(2) {
+            transform: rotate(60deg);
+            -webkit-transform: rotate(60deg);
+            -o-transform: rotate(60deg);
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* minFontSize + (maxFontSize - minFontSize) * (100vw - minVWidth)/(maxVWidth - minVWidth) */
+            font-size: calc(64px + (80 - 64) * (100vw - 320px)/(960 - 320));
+        }
+
+        body,
+        input {
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        body {
+            background: #bbb;
+        }
+
+        input {
+            display: block;
+            margin-bottom: 1.5em;
+        }
+
+        main {
+            padding: 1.5em 0 0 0;
             text-align: center;
         }
 
-        .fan-controls,
-        .bulb-controls,
-        .led-controls,
-        .ac-controls {
-            position: absolute;
-            top: 320px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: none;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        .l {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 0.75em;
+            box-shadow: 0.125em 0.125em 0 0.125em rgba(0, 0, 0, 0.3) inset;
+            color: #fdea7b;
+            display: inline-flex;
+            align-items: center;
+            margin: auto;
+            padding: 0.15em;
+            width: 3em;
+            height: 1.5em;
+            transition: background-color 0.1s 0.3s ease-out, box-shadow 0.1s 0.3s ease-out;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
 
-        .controls label {
+        .l:before,
+        .l:after {
+            content: "";
             display: block;
+        }
+
+        .l:before {
+            background-color: #d7d7d7;
+            border-radius: 50%;
+            width: 1.2em;
+            height: 1.2em;
+            transition: background-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+            z-index: 1;
+        }
+
+        .l:after {
+            background:
+                linear-gradient(transparent 50%, rgba(0, 0, 0, 0.15) 0) 0 50% / 50% 100%,
+                repeating-linear-gradient(90deg, #bbb 0, #bbb, #bbb 20%, #999 20%, #999 40%) 0 50% / 50% 100%,
+                radial-gradient(circle at 50% 50%, #888 25%, transparent 26%);
+            background-repeat: no-repeat;
+            border: 0.25em solid transparent;
+            border-left: 0.4em solid #d8d8d8;
+            border-right: 0 solid transparent;
+            transition: border-left-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+            transform: translateX(-22.5%);
+            transform-origin: 25% 50%;
+            width: 1.2em;
+            height: 1em;
+        }
+
+        /* Checked */
+        .l:checked {
+            background-color: rgba(0, 0, 0, 0.45);
+            box-shadow: 0.125em 0.125em 0 0.125em rgba(0, 0, 0, 0.1) inset;
+        }
+
+        .l:checked:before {
+            background-color: currentColor;
+            transform: translateX(125%)
+        }
+
+        .l:checked:after {
+            border-left-color: currentColor;
+            transform: translateX(-2.5%) rotateY(180deg);
+        }
+
+        /* Other States */
+        .l:focus {
+            /* Usually an anti-A11Y practice but set to remove an annoyance just for this demo */
+            outline: 0;
+        }
+
+        .temperature {
+            font-size: 36px;
             margin-bottom: 10px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .item3container {
+            background-color: yellow;
+
+        }
+
+        .cardbulb {
+            z-index: 99px;
+        }
+
+        .item3yellow {
+            /* Deform with transform and perspective */
+            transform: perspective(200px) rotateX(5deg) rotateY(3deg);
+
+            /* Blur with filter */
+            filter: blur(30px);
+
+            /* Add noise with noise function */
+            background-image: noise(20px);
+
+            /* Additional styling (optional) */
+            background-color: yellow;
+            padding: 20px;
+            border: 1px solid black;
+            z-index: 22;
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <p>Hi user!</p>
-    </header>
-    <br>
-    <div class="icon-container">
-        <div class="icon fan" onclick="showFanControls()">
-            <img src="https://cdn-icons-png.flaticon.com/512/556/556878.png" width="100" height="100" />
+    <div class="container">
+        <div class="sidebar">
+
         </div>
-        <div class="icon bulb" onclick="showBulbControls()">
-            <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" width="100" height="100" />
+        <div class="bento-flex">
+            <div class="item1">
+
+            </div>
+            <div class="item2">Item 2</div>
         </div>
-        <div class="icon led" onclick="showLedControls()">
-            <img src="https://cdn-icons-png.flaticon.com/512/8534/8534359.png" width="100" height="100" />
+        <div class="bento-flex2">
+            <div class="item3">
+                <div class="item3container">
+
+                    <div class="cardbulb">
+                        <input class="l" type="checkbox">
+                    </div>
+                </div>
+
+            </div>
+            <div class="item4">
+
+                <div class="card fan">
+
+                    <div class="container">
+
+
+                        <div class="de">
+
+
+                            <div class="den">
+
+
+                                <hr class="line">
+                                <hr class="line">
+                                <hr class="line">
+
+
+                                <div class="switch">
+
+
+                                    <label for="switch_off"><span>OFF</span></label>
+                                    <label for="switch_1"><span>1</span></label>
+                                    <label for="switch_2"><span>2</span></label>
+                                    <label for="switch_3"><span>3</span></label>
+                                    <label for="switch_4"><span>4</span></label>
+                                    <label for="switch_5"><span>5</span></label>
+
+
+                                    <input type="radio" checked="" name="switch" id="switch_off">
+                                    <input type="radio" name="switch" id="switch_1">
+                                    <input type="radio" name="switch" id="switch_2">
+                                    <input type="radio" name="switch" id="switch_3">
+                                    <input type="radio" name="switch" id="switch_4">
+                                    <input type="radio" name="switch" id="switch_5">
+
+
+                                    <div class="light"><span></span></div>
+
+
+                                    <div class="dot"><span></span></div>
+
+
+                                    <div class="dene">
+                                        <div class="denem">
+                                            <div class="deneme">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="icon ac" onclick="showACControls()">
-            <img src="https://cdn-icons-png.flaticon.com/512/911/911409.png" width="100" height="100" />
-        </div>
-    </div>
-    <div class="fan-controls controls" id="fanControls">
-        <label>
-            <input type="checkbox" id="fanSwitch" onchange="toggleFan()" />
-            Turn On/Off
-        </label>
-        <label>
-            Fan Speed:
-            <input type="range" id="fanSpeed" min="0" max="5" onchange="setFanSpeed(this.value)" />
-        </label>
-    </div>
-    <div class="bulb-controls controls" id="bulbControls">
-        <label>
-            <input type="checkbox" id="bulbSwitch" onchange="toggleBulb()" />
-            Turn On/Off
-        </label>
-    </div>
-    <div class="led-controls controls" id="ledControls">
-        <label>
-            Click the LED bulb to change background color:
-            <input type="color" id="ledColorPicker" onchange="changeBackgroundColor(this.value)" />
-        </label>
     </div>
 
-    <div class="ac-controls controls" id="acControls">
-        <label>
-            <input type="checkbox" id="acSwitch" onchange="toggleAC()" />
-            Turn On/Off
-        </label>
-    </div>
-    <footer>
-        <p>Developed by Team HackerHound. All rights reserved.</p>
-    </footer>
+</body>
+<script>
 
-    <script>
+    //swastik ka code
 
-        //swastik ka code
+    function showFanControls() {
+        hideAllControls();
+        const fanControls = document.getElementById("fanControls");
+        fanControls.style.display = "block";
+    }
 
-        function showFanControls() {
-            hideAllControls();
-            const fanControls = document.getElementById("fanControls");
-            fanControls.style.display = "block";
+    function toggleFan() {
+        const fanSwitch = document.getElementById("fanSwitch");
+        if (fanSwitch.checked) {
+            alert("Fan turned on");
+            // If the fan is turned on, show the fan controls
+            showFanControls();
+        } else {
+            alert("Fan turned off");
+            // If the fan is turned off, hide the fan controls
+            hideFanControls();
         }
+    }
 
-        function toggleFan() {
-            const fanSwitch = document.getElementById("fanSwitch");
-            if (fanSwitch.checked) {
-                alert("Fan turned on");
-                // If the fan is turned on, show the fan controls
-                showFanControls();
-            } else {
-                alert("Fan turned off");
-                // If the fan is turned off, hide the fan controls
-                hideFanControls();
-            }
-        }
+    function setFanSpeed(speed) {
+        alert("Fan speed set to " + speed);
+        // Call the updateFanSpeed function to update the fan speed
+        updateFanSpeed(speed);
+    }
 
-        function setFanSpeed(speed) {
-            alert("Fan speed set to " + speed);
-            // Call the updateFanSpeed function to update the fan speed
-            updateFanSpeed(speed);
-        }
+    function showBulbControls() {
+        hideAllControls();
+        const bulbControls = document.getElementById("bulbControls");
+        bulbControls.style.display = "block";
+    }
+    function hideBulbControls() {
+        const bulbControls = document.getElementById("bulbControls");
+        bulbControls.style.display = "none";
+    }
 
-        function showBulbControls() {
-            hideAllControls();
-            const bulbControls = document.getElementById("bulbControls");
-            bulbControls.style.display = "block";
+    function toggleBulb() {
+        const bulbSwitch = document.getElementById("bulbSwitch");
+        if (bulbSwitch.checked) {
+            alert("Bulb turned on");
+            // If the bulb is turned on, show the bulb controls
+            showBulbControls();
+            // Update the bulb status to 1 (on)
+            updateBulbStatus(1);
+        } else {
+            alert("Bulb turned off");
+            // If the bulb is turned off, hide the bulb controls
+            hideBulbControls();
+            // Update the bulb status to 0 (off)
+            updateBulbStatus(0);
         }
-        function hideBulbControls() {
-            const bulbControls = document.getElementById("bulbControls");
-            bulbControls.style.display = "none";
-        }
+    }
+    function showLedControls() {
+        hideAllControls();
+        const ledControls = document.getElementById("ledControls");
+        ledControls.style.display = "block";
+    }
 
-        function toggleBulb() {
-            const bulbSwitch = document.getElementById("bulbSwitch");
-            if (bulbSwitch.checked) {
-                alert("Bulb turned on");
-                // If the bulb is turned on, show the bulb controls
-                showBulbControls();
-                // Update the bulb status to 1 (on)
-                updateBulbStatus(1);
-            } else {
-                alert("Bulb turned off");
-                // If the bulb is turned off, hide the bulb controls
-                hideBulbControls();
-                // Update the bulb status to 0 (off)
-                updateBulbStatus(0);
-            }
-        }
-        function showLedControls() {
-            hideAllControls();
-            const ledControls = document.getElementById("ledControls");
-            ledControls.style.display = "block";
-        }
+    function changeBackgroundColor(color) {
+        document.body.style.backgroundColor = color;
+        alert("Background color changed to " + color);
+    }
 
-        function changeBackgroundColor(color) {
-            document.body.style.backgroundColor = color;
-            alert("Background color changed to " + color);
-        }
+    function showACControls() {
+        hideAllControls();
+        const acControls = document.getElementById("acControls");
+        acControls.style.display = "block";
+    }
 
-        function showACControls() {
-            hideAllControls();
-            const acControls = document.getElementById("acControls");
-            acControls.style.display = "block";
+    let acOn = false;
+    function toggleAC() {
+        const acSwitch = document.getElementById("acSwitch");
+        acOn = acSwitch.checked;
+        if (acOn) {
+            alert("AC turned on");
+            setTemperaturePrompt();
+            // Call updateAC function to turn on the AC
+            updateAC(25, 1); // Assuming default temperature is 25 and AC is turned on
+        } else {
+            alert("AC turned off");
+            // Call updateAC function to turn off the AC
+            updateAC(0, 0); // Turn off the AC (state: 0, temperature: 0)
         }
+    }
 
-        let acOn = false;
-        function toggleAC() {
-            const acSwitch = document.getElementById("acSwitch");
-            acOn = acSwitch.checked;
-            if (acOn) {
-                alert("AC turned on");
-                setTemperaturePrompt();
-                // Call updateAC function to turn on the AC
-                updateAC(25, 1); // Assuming default temperature is 25 and AC is turned on
-            } else {
+    function setTemperaturePrompt() {
+        if (acOn) {
+            const temperature = prompt(
+                "Please enter the desired temperature (between 16 and 30):"
+            );
+            if (temperature === null) {
+                acOn = false;
+                document.getElementById("acSwitch").checked = false;
                 alert("AC turned off");
                 // Call updateAC function to turn off the AC
                 updateAC(0, 0); // Turn off the AC (state: 0, temperature: 0)
-            }
-        }
-
-        function setTemperaturePrompt() {
-            if (acOn) {
-                const temperature = prompt(
-                    "Please enter the desired temperature (between 16 and 30):"
-                );
-                if (temperature === null) {
-                    acOn = false;
-                    document.getElementById("acSwitch").checked = false;
-                    alert("AC turned off");
-                    // Call updateAC function to turn off the AC
-                    updateAC(0, 0); // Turn off the AC (state: 0, temperature: 0)
+            } else {
+                const parsedTemperature = parseInt(temperature);
+                if (
+                    isNaN(parsedTemperature) ||
+                    parsedTemperature < 16 ||
+                    parsedTemperature > 30
+                ) {
+                    alert("Please enter a valid temperature between 16 and 30.");
+                    setTemperaturePrompt();
                 } else {
-                    const parsedTemperature = parseInt(temperature);
-                    if (
-                        isNaN(parsedTemperature) ||
-                        parsedTemperature < 16 ||
-                        parsedTemperature > 30
-                    ) {
-                        alert("Please enter a valid temperature between 16 and 30.");
-                        setTemperaturePrompt();
-                    } else {
-                        alert("Temperature set to " + parsedTemperature);
-                        // Call updateAC function to set the temperature
-                        updateAC(parsedTemperature, 1); // Set temperature and turn AC on
-                    }
+                    alert("Temperature set to " + parsedTemperature);
+                    // Call updateAC function to set the temperature
+                    updateAC(parsedTemperature, 1); // Set temperature and turn AC on
                 }
             }
         }
+    }
 
-        // Function to update AC status on the backend
-        function updateAC(temperature, state) {
-            fetch('/updateAC', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    teamid: 'GKSzNHE',
-                    device: 'AC',
-                    value: {
-                        temp: temperature,
-                        state: state
-                    }
-                })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    // Handle response from the backend if needed
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    // Handle errors if any
-                });
-        }
-
-        function hideAllControls() {
-            const controls = document.querySelectorAll(".controls");
-            controls.forEach((control) => {
-                control.style.display = "none";
-            });
-        }
-
-
-        // swastik ka code
-        function updateFanSpeed(fanSpeed) {
-            const data = {
-                teamid: "GKSzNHE",
-                device: "fan",
-                value: fanSpeed.toString()
-            };
-
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            };
-
-            const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
-
-            fetch(apiUrl, options)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Response:', data);
-                    // Handle the response data here
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    // Handle errors here
-                });
-        }
-
-        function updateBulbStatus(status) {
-
-            if (status !== 0 && status !== 1) {
-                console.error('Invalid status. Status must be 0 or 1.');
-                return;
-            }
-
-            const data = {
-                teamid: "GKSzNHE",
-                device: "bulb",
-                value: status.toString()
-            };
-
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            };
-
-            const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
-
-            fetch(apiUrl, options)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Response:', data);
-
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-
-                });
-        }
-        function updateLed(hexValue) {
-            // Check if hexValue is a valid hexadecimal color value
-            if (!/^#([0-9A-F]{3}){1,2}$/i.test(hexValue)) {
-                console.error('Invalid hex value. Please provide a valid hexadecimal color value.');
-                return;
-            }
-
-            const data = {
-                teamid: "GKSzNHE",
-                device: "led",
-                value: hexValue // Hexadecimal color value
-            };
-
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            };
-
-            const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
-
-            fetch(apiUrl, options)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Response:', data);
-                    // Handle the response data here
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    // Handle errors here
-                });
-        }
-
-        function updateAC(temp, state) {
-            // Check if temperature is a valid number and state is either 0 or 1
-            if (typeof temp !== 'number' || !Number.isInteger(temp) || temp < 0 || temp > 100) {
-                console.error('Invalid temperature. Please provide a valid integer temperature value between 0 and 100.');
-                return;
-            }
-
-            if (state !== 0 && state !== 1) {
-                console.error('Invalid state. Please provide either 0 (off) or 1 (on).');
-                return;
-            }
-
-            const data = {
-                teamid: "GKSzNHE",
-                device: "AC",
+    // Function to update AC status on the backend
+    function updateAC(temperature, state) {
+        fetch('/updateAC', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                teamid: 'GKSzNHE',
+                device: 'AC',
                 value: {
-                    temp: temp, // Temperature value
-                    state: state // AC state (0 for off, 1 for on)
+                    temp: temperature,
+                    state: state
                 }
-            };
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // Handle response from the backend if needed
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors if any
+            });
+    }
 
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            };
+    function hideAllControls() {
+        const controls = document.querySelectorAll(".controls");
+        controls.forEach((control) => {
+            control.style.display = "none";
+        });
+    }
 
-            const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
 
-            fetch(apiUrl, options)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Response:', data);
+    // swastik ka code
+    function updateFanSpeed(fanSpeed) {
+        const data = {
+            teamid: "GKSzNHE",
+            device: "fan",
+            value: fanSpeed.toString()
+        };
 
-                })
-                .catch(error => {
-                    console.error('Error:', error);
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
 
-                });
+        const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+        fetch(apiUrl, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response:', data);
+                // Handle the response data here
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors here
+            });
+    }
+
+    function updateBulbStatus(status) {
+
+        if (status !== 0 && status !== 1) {
+            console.error('Invalid status. Status must be 0 or 1.');
+            return;
         }
 
+        const data = {
+            teamid: "GKSzNHE",
+            device: "bulb",
+            value: status.toString()
+        };
 
-    </script>
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+        fetch(apiUrl, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response:', data);
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+
+            });
+    }
+    function updateLed(hexValue) {
+        // Check if hexValue is a valid hexadecimal color value
+        if (!/^#([0-9A-F]{3}){1,2}$/i.test(hexValue)) {
+            console.error('Invalid hex value. Please provide a valid hexadecimal color value.');
+            return;
+        }
+
+        const data = {
+            teamid: "GKSzNHE",
+            device: "led",
+            value: hexValue // Hexadecimal color value
+        };
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+        fetch(apiUrl, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response:', data);
+                // Handle the response data here
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors here
+            });
+    }
+
+    function updateAC(temp, state) {
+        // Check if temperature is a valid number and state is either 0 or 1
+        if (typeof temp !== 'number' || !Number.isInteger(temp) || temp < 0 || temp > 100) {
+            console.error('Invalid temperature. Please provide a valid integer temperature value between 0 and 100.');
+            return;
+        }
+
+        if (state !== 0 && state !== 1) {
+            console.error('Invalid state. Please provide either 0 (off) or 1 (on).');
+            return;
+        }
+
+        const data = {
+            teamid: "GKSzNHE",
+            device: "AC",
+            value: {
+                temp: temp, // Temperature value
+                state: state // AC state (0 for off, 1 for on)
+            }
+        };
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+        fetch(apiUrl, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response:', data);
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+
+            });
+    }
+
+
+</script>
 </body>
 
 </html>
