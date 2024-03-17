@@ -7,18 +7,76 @@
     <title>Hover Enlarge Icons</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
+            --dot-bg: black;
+            --dot-color: white;
+            --dot-size: 1px;
+            --dot-space: 22px;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            background:
+                linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+                linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+                var(--dot-color);
         }
+
+
 
         .container {
             display: flex;
             flex-direction: row;
         }
 
+        .sidebar {
+            width: 250px;
+            /* Reduced width for a smaller sidebar */
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            overflow: hidden;
+            font-size: 24px;
+            display: flex;
+            flex-direction: column;
+            /* Hide overflow for rounded corners */
+        }
+
+        .sidebarRow {
+            margin-top: 2px;
+            border-top: 1px solid wheat;
+            /* Example values for style, width, and color */
+        }
+
+
+        .sidebar-header {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar-header img {
+            width: 50px;
+            /* Adjust the image size */
+            height: 50px;
+            border-radius: 50%;
+            /* Make the image circular */
+            margin-right: 15px;
+        }
+
+        .sidebar-title {
+            color: rgb(201, 201, 201);
+        }
+
+        .sidebar-content {
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+
         .bento-flex {
-            border: 1px solid #c5a9a9;
             /* Basic border for each item */
             padding: 15px;
             height: 100vh;
@@ -26,7 +84,6 @@
         }
 
         .bento-flex2 {
-            border: 1px solid #a39191;
             /* Basic border for each item */
             padding: 15px;
             height: 100vh;
@@ -34,39 +91,90 @@
         }
 
         .item1 {
-            background-color: #faf6ee;
-            height: 60vh;
+            height: 57vh;
+            background: rgba(255, 255, 255, 0.1);
+            /* Transparent white background for the glassmorphic effect */
+            backdrop-filter: blur(10px);
+            /* Apply blur effect */
             border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            /* Add shadow */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
 
         .item2 {
-            background: rgb(6, 106, 255);
-            height: 40vh;
-            border-radius: 20px;
+            height: 70vh;
             margin-top: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            /* Transparent white background for the glassmorphic effect */
+            backdrop-filter: blur(10px);
+            /* Apply blur effect */
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            /* Add shadow */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
 
         }
 
         .item3 {
-            background-color: rgb(37, 37, 37);
             height: 37vh;
+            background: rgba(255, 255, 255, 0.1);
+            /* Transparent white background for the glassmorphic effect */
+            backdrop-filter: blur(10px);
+            /* Apply blur effect */
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            /* Add shadow */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
 
         .item4 {
             display: flex;
-            background-color: antiquewhite;
+            flex-direction: column;
             height: 90vh;
-            border-radius: 20px;
+            padding: 10px;
+            background-color: antiquewhite;
+            /* Set the height of the container to 90% of the viewport height */
             margin-top: 15px;
-            align-items: flex-end;
-            justify-content: center;
+            justify-content: flex-end;
+            /* Align items to the bottom of the container */
+            align-items: center;
+            /* Center items horizontally */
+            background: rgba(255, 255, 255, 0.1);
+            /* Transparent white background for the glassmorphic effect */
+            backdrop-filter: blur(10px);
+            /* Apply blur effect */
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            /* Add shadow */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
 
+        .weatherInfo {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+        }
+
+        .city {
+            font-size: 40px;
+        }
+
+        .cityTemp {
+            font-size: 80px;
+        }
+
+        .condition {
+            color: grey;
+            font-size: 20px;
         }
 
 
@@ -526,9 +634,6 @@
             line-height: 1.5;
         }
 
-        body {
-            background: #bbb;
-        }
 
         input {
             display: block;
@@ -632,7 +737,8 @@
 
         .item3container {
             background-color: yellow;
-
+            /* Apply backdrop filter for blur effect */
+            backdrop-filter: blur(10px);
         }
 
         .cardbulb {
@@ -655,31 +761,115 @@
             border: 1px solid black;
             z-index: 22;
         }
+
+        .acsvg {
+            display: flex;
+            justify-content: center;
+        }
+
+        .toggletemp {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
+        }
+
+        .color-picker {
+            position: relative;
+        }
+
+        .color-indicator {
+            display: inline-block;
+
+            width: 200px;
+            height: 400px;
+            background-color: #fff;
+            border-radius: 20px;
+            vertical-align: middle;
+        }
+
+        #color-picker {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 40px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div class="sidebar">
-
+            <div class="sidebar-header">
+                <img src="user.svg" alt="Your Image">
+                <div class="sidebar-title">
+                    <p class="sidebarRow">Dashboard</p>
+                    <p class="sidebarRow">User</p>
+                    <p class="sidebarRow">Maps</p>
+                    <p class="sidebarRow">Appliances</p>
+                </div>
+            </div>
         </div>
+
         <div class="bento-flex">
             <div class="item1">
-
+                <div class="acsvg">
+                    <img src="https://www.svgrepo.com/show/30325/air-conditioner.svg" alt="SVG Image Description"
+                        height="300px">
+                </div>
+                <div class="toggletemp">
+                    <button class="btn" id="increaseBtn">+</button>
+                    <div class="temperature" id="temperature">20°C</div>
+                    <button class="btn" id="decreaseBtn">-</button>
+                </div>
             </div>
-            <div class="item2">Item 2</div>
+            <div class="item2">
+                haskdfh
+                <div class="color-picker"></div>
+                <div id="color-indicator" class="color-picker">
+
+                </div>
+                <div class="color-picker"></div>
+                <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+                <script>
+                    let colorIndicator = document.getElementById('color-indicator');
+                    const colorPicker = new iro.colorPicker("#color-picker", {
+                        width: 180, color: "#fff"
+                    });
+                    colorPicker.on('color:change', function (color) {
+                        colorIndicator.style.backgroundColor = color.hexString;
+                    })
+                </script>
+            </div>
         </div>
         <div class="bento-flex2">
             <div class="item3">
                 <div class="item3container">
 
                     <div class="cardbulb">
-                        <input class="l" type="checkbox">
+                        <input class="l" type="checkbox" id="myBulb">
                     </div>
                 </div>
 
             </div>
             <div class="item4">
+                <div class="weatherInfo">
+                    <div class="wetherAdd">
+                        <div class="city">
+                            Bhubaneswar
+                        </div>
+                        <div class="condition">
+                            Sunny
+                        </div>
+                    </div>
+                    <div class="weatherMath">
+                        <div class="cityTemp">
+                            26 C
+                        </div>
+                    </div>
+
+
+                </div>
 
                 <div class="card fan">
 
@@ -709,11 +899,11 @@
 
 
                                     <input type="radio" checked="" name="switch" id="switch_off">
-                                    <input type="radio" name="switch" id="switch_1">
-                                    <input type="radio" name="switch" id="switch_2">
-                                    <input type="radio" name="switch" id="switch_3">
-                                    <input type="radio" name="switch" id="switch_4">
-                                    <input type="radio" name="switch" id="switch_5">
+                                    <input type="radio" name="switch" id="switch_1" onclick="setFanSpeed(1)">
+                                    <input type="radio" name="switch" id="switch_2 " onclick="setFanSpeed(2)">
+                                    <input type="radio" name="switch" id="switch_3" onclick="setFanSpeed(3)">
+                                    <input type="radio" name="switch" id="switch_4" onclick="setFanSpeed(4)">
+                                    <input type="radio" name="switch" id="switch_5" onclick="setFanSpeed(5)">
 
 
                                     <div class="light"><span></span></div>
@@ -738,323 +928,270 @@
         </div>
     </div>
 
+
 </body>
 <script>
+    // JavaScript code to handle temperature toggling
+    const temperatureElement = document.getElementById("temperature");
+    const increaseBtn = document.getElementById("increaseBtn");
+    const decreaseBtn = document.getElementById("decreaseBtn");
 
+    let currentTemperature = 20; // Initial temperature
+
+    function updateTemperature() {
+        temperatureElement.textContent = currentTemperature + "°C";
+        updateAC(currentTemperature , 1);
+    }
+
+    increaseBtn.addEventListener("click", () => {
+        if (currentTemperature < 30) {
+            currentTemperature++;
+            updateTemperature();
+        }
+    });
+
+    decreaseBtn.addEventListener("click", () => {
+        if (currentTemperature > 16) {
+            currentTemperature--;
+            updateTemperature();
+        }
+    });
+
+    updateTemperature(); // Initial display
     //swastik ka code
 
-    function showFanControls() {
-        hideAllControls();
-        const fanControls = document.getElementById("fanControls");
-        fanControls.style.display = "block";
-    }
 
-    function toggleFan() {
-        const fanSwitch = document.getElementById("fanSwitch");
-        if (fanSwitch.checked) {
-            alert("Fan turned on");
-            // If the fan is turned on, show the fan controls
-            showFanControls();
-        } else {
-            alert("Fan turned off");
-            // If the fan is turned off, hide the fan controls
-            hideFanControls();
-        }
-    }
 
     function setFanSpeed(speed) {
-        alert("Fan speed set to " + speed);
-        // Call the updateFanSpeed function to update the fan speed
         updateFanSpeed(speed);
     }
 
-    function showBulbControls() {
-        hideAllControls();
-        const bulbControls = document.getElementById("bulbControls");
-        bulbControls.style.display = "block";
-    }
-    function hideBulbControls() {
-        const bulbControls = document.getElementById("bulbControls");
-        bulbControls.style.display = "none";
-    }
+    const checkbox = document.getElementById('myBulb');
 
-    function toggleBulb() {
-        const bulbSwitch = document.getElementById("bulbSwitch");
-        if (bulbSwitch.checked) {
-            alert("Bulb turned on");
-            // If the bulb is turned on, show the bulb controls
-            showBulbControls();
-            // Update the bulb status to 1 (on)
-            updateBulbStatus(1);
+    // You can also listen for changes in the checkbox state
+    checkbox.addEventListener('change', function () {
+        if (this.checked) {
+            console.log('Checkbox is checked11');
+            updateBulbStatus(1); // Checkbox was checked
         } else {
-            alert("Bulb turned off");
-            // If the bulb is turned off, hide the bulb controls
-            hideBulbControls();
-            // Update the bulb status to 0 (off)
-            updateBulbStatus(0);
+            console.log('Checkbox is unchecked11');
+            updateBulbStatus(0); // Checkbox was unchecked
         }
-    }
-    function showLedControls() {
-        hideAllControls();
-        const ledControls = document.getElementById("ledControls");
-        ledControls.style.display = "block";
-    }
-
-    function changeBackgroundColor(color) {
-        document.body.style.backgroundColor = color;
-        alert("Background color changed to " + color);
-    }
-
-    function showACControls() {
-        hideAllControls();
-        const acControls = document.getElementById("acControls");
-        acControls.style.display = "block";
-    }
-
-    let acOn = false;
-    function toggleAC() {
-        const acSwitch = document.getElementById("acSwitch");
-        acOn = acSwitch.checked;
-        if (acOn) {
-            alert("AC turned on");
-            setTemperaturePrompt();
-            // Call updateAC function to turn on the AC
-            updateAC(25, 1); // Assuming default temperature is 25 and AC is turned on
-        } else {
-            alert("AC turned off");
-            // Call updateAC function to turn off the AC
-            updateAC(0, 0); // Turn off the AC (state: 0, temperature: 0)
-        }
-    }
-
-    function setTemperaturePrompt() {
-        if (acOn) {
-            const temperature = prompt(
-                "Please enter the desired temperature (between 16 and 30):"
-            );
-            if (temperature === null) {
-                acOn = false;
-                document.getElementById("acSwitch").checked = false;
-                alert("AC turned off");
-                // Call updateAC function to turn off the AC
-                updateAC(0, 0); // Turn off the AC (state: 0, temperature: 0)
-            } else {
-                const parsedTemperature = parseInt(temperature);
-                if (
-                    isNaN(parsedTemperature) ||
-                    parsedTemperature < 16 ||
-                    parsedTemperature > 30
-                ) {
-                    alert("Please enter a valid temperature between 16 and 30.");
-                    setTemperaturePrompt();
-                } else {
-                    alert("Temperature set to " + parsedTemperature);
-                    // Call updateAC function to set the temperature
-                    updateAC(parsedTemperature, 1); // Set temperature and turn AC on
-                }
-            }
-        }
-    }
-
-    // Function to update AC status on the backend
-    function updateAC(temperature, state) {
-        fetch('/updateAC', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                teamid: 'GKSzNHE',
-                device: 'AC',
-                value: {
-                    temp: temperature,
-                    state: state
-                }
-            })
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                // Handle response from the backend if needed
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Handle errors if any
-            });
-    }
-
-    function hideAllControls() {
-        const controls = document.querySelectorAll(".controls");
-        controls.forEach((control) => {
-            control.style.display = "none";
-        });
-    }
+    });
 
 
-    // swastik ka code
-    function updateFanSpeed(fanSpeed) {
-        const data = {
-            teamid: "GKSzNHE",
-            device: "fan",
-            value: fanSpeed.toString()
-        };
 
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
+function showLedControls() {
+hideAllControls();
+const ledControls = document.getElementById("ledControls");
+ledControls.style.display = "block";
+}
 
-        const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+function changeBackgroundColor(color) {
+document.body.style.backgroundColor = color;
+alert("Background color changed to " + color);
+}
 
-        fetch(apiUrl, options)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Response:', data);
-                // Handle the response data here
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Handle errors here
-            });
-    }
 
-    function updateBulbStatus(status) {
+// Function to update AC status on the backend
+function updateAC(temperature, state) {
+fetch('/updateAC', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify({
+teamid: 'GKSzNHE',
+device: 'AC',
+value: {
+temp: temperature,
+state: state
+}
+})
+})
+.then(response => response.json())
+.then(data => {
+console.log(data);
+// Handle response from the backend if needed
+})
+.catch(error => {
+console.error('Error:', error);
+// Handle errors if any
+});
+}
 
-        if (status !== 0 && status !== 1) {
-            console.error('Invalid status. Status must be 0 or 1.');
-            return;
-        }
+function hideAllControls() {
+const controls = document.querySelectorAll(".controls");
+controls.forEach((control) => {
+control.style.display = "none";
+});
+}
 
-        const data = {
-            teamid: "GKSzNHE",
-            device: "bulb",
-            value: status.toString()
-        };
 
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
+// swastik ka code
+function updateFanSpeed(fanSpeed) {
+const data = {
+teamid: "GKSzNHE",
+device: "fan",
+value: fanSpeed.toString()
+};
 
-        const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+const options = {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(data)
+};
 
-        fetch(apiUrl, options)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Response:', data);
+const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
 
-            })
-            .catch(error => {
-                console.error('Error:', error);
+fetch(apiUrl, options)
+.then(response => {
+if (!response.ok) {
+throw new Error('Network response was not ok');
+}
+return response.json();
+})
+.then(data => {
+console.log('Response:', data);
+// Handle the response data here
+})
+.catch(error => {
+console.error('Error:', error);
+// Handle errors here
+});
+}
 
-            });
-    }
-    function updateLed(hexValue) {
-        // Check if hexValue is a valid hexadecimal color value
-        if (!/^#([0-9A-F]{3}){1,2}$/i.test(hexValue)) {
-            console.error('Invalid hex value. Please provide a valid hexadecimal color value.');
-            return;
-        }
+function updateBulbStatus(status) {
 
-        const data = {
-            teamid: "GKSzNHE",
-            device: "led",
-            value: hexValue // Hexadecimal color value
-        };
+if (status !== 0 && status !== 1) {
+console.error('Invalid status. Status must be 0 or 1.');
+return;
+}
 
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
+const data = {
+teamid: "GKSzNHE",
+device: "bulb",
+value: status.toString()
+};
 
-        const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+const options = {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(data)
+};
 
-        fetch(apiUrl, options)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Response:', data);
-                // Handle the response data here
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Handle errors here
-            });
+const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+fetch(apiUrl, options)
+.then(response => {
+if (!response.ok) {
+throw new Error('Network response was not ok');
+}
+return response.json();
+})
+.then(data => {
+console.log('Response:', data);
+
+})
+.catch(error => {
+console.error('Error:', error);
+
+});
+}
+function updateLed(hexValue) {
+// Check if hexValue is a valid hexadecimal color value
+if (!/^#([0-9A-F]{3}){1,2}$/i.test(hexValue)) {
+console.error('Invalid hex value. Please provide a valid hexadecimal color value.');
+return;
+}
+
+const data = {
+teamid: "GKSzNHE",
+device: "led",
+value: hexValue // Hexadecimal color value
+};
+
+const options = {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(data)
+};
+
+const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+fetch(apiUrl, options)
+.then(response => {
+if (!response.ok) {
+throw new Error('Network response was not ok');
+}
+return response.json();
+})
+.then(data => {
+console.log('Response:', data);
+// Handle the response data here
+})
+.catch(error => {
+console.error('Error:', error);
+// Handle errors here
+});
+}
+
+function updateAC(temp, state) {
+// Check if temperature is a valid number and state is either 0 or 1
+if (typeof temp !== 'number' || !Number.isInteger(temp) || temp < 0 || temp> 100) {
+    console.error('Invalid temperature. Please provide a valid integer temperature value between 0 and 100.');
+    return;
     }
 
-    function updateAC(temp, state) {
-        // Check if temperature is a valid number and state is either 0 or 1
-        if (typeof temp !== 'number' || !Number.isInteger(temp) || temp < 0 || temp > 100) {
-            console.error('Invalid temperature. Please provide a valid integer temperature value between 0 and 100.');
-            return;
-        }
+    if (state !== 0 && state !== 1) {
+    console.error('Invalid state. Please provide either 0 (off) or 1 (on).');
+    return;
+    }
 
-        if (state !== 0 && state !== 1) {
-            console.error('Invalid state. Please provide either 0 (off) or 1 (on).');
-            return;
-        }
+    const data = {
+    teamid: "GKSzNHE",
+    device: "AC",
+    value: {
+    temp: temp, // Temperature value
+    state: state // AC state (0 for off, 1 for on)
+    }
+    };
 
-        const data = {
-            teamid: "GKSzNHE",
-            device: "AC",
-            value: {
-                temp: temp, // Temperature value
-                state: state // AC state (0 for off, 1 for on)
-            }
-        };
+    const options = {
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+    };
 
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
+    const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
 
-        const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+    fetch(apiUrl, options)
+    .then(response => {
+    if (!response.ok) {
+    throw new Error('Network response was not ok');
+    }
+    return response.json();
+    })
+    .then(data => {
+    console.log('Response:', data);
 
-        fetch(apiUrl, options)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Response:', data);
+    })
+    .catch(error => {
+    console.error('Error:', error);
 
-            })
-            .catch(error => {
-                console.error('Error:', error);
-
-            });
+    });
     }
 
 
-</script>
-</body>
+    </script>
+    </body>
 
 </html>
