@@ -1,0 +1,78 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="../public/styles.css">
+</head>
+<body>
+    <div class="formc-container">
+        <h2> login</h2>
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="name"> Name :</label>
+                <input type="text" id="name" name="username"  placeholder="Enter your username..." required autocomplete="off"><br>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" placeholder="password" required>
+                <button type="submit" class="submit-btn">login</button>
+            </div>
+        </form>
+        <p>Don't have an account ? <a href="/signup">signup</a></p>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        form{
+            position: relative;
+            top: 150px;
+            left: 540px;
+            justify-content: center;
+            align-items: center;
+            width: 450px;
+            height: 450px;
+            border: 1px solid black;
+            padding: 30px;
+            box-shadow: 10px 10px lightblue;
+        }
+        form .form-floating{
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <form class="login-bar">
+        <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    
+        <div class="form-floating">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+    
+        <div class="form-check text-start my-3">
+          <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Remember me
+          </label>
+        </div>
+        <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+        <p>New user <a href="/signup">Register</a></p>
+      </form>
+</body>
+</html>
