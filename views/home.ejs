@@ -95,5 +95,87 @@
     <footer>
       <p>Developed by Team HackerHound. All rights reserved.</p>
     </footer>
+    <script>
+        function updateFanSpeed(fanSpeed) {
+    const data = {
+        teamid: "GKSzNHE",
+        device: "fan",
+        value: fanSpeed.toString() 
+    };
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+
+    const apiUrl = 'https://kodessphere-api.vercel.app/devices/'; 
+
+    fetch(apiUrl, options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Response:', data);
+            // Handle the response data here
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle errors here
+        });
+}
+
+function updateBulbStatus(status) {
+    // Check if status is valid (0 or 1)
+    if (status !== 0 && status !== 1) {
+        console.error('Invalid status. Status must be 0 or 1.');
+        return;
+    }
+
+    const data = {
+        teamid: "GKSzNHE",
+        device: "bulb",
+        value: status.toString() // Convert status to string
+    };
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+
+    const apiUrl = 'https://kodessphere-api.vercel.app/devices/'; // Replace with your API endpoint URL
+
+    fetch(apiUrl, options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Response:', data);
+            // Handle the response data here
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle errors here
+        });
+}
+
+
+updateBulbStatus(1); 
+
+
+updateFanSpeed(2);
+
+    </script>
   </body>
 </html>
