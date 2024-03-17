@@ -1,274 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hover Enlarge Icons</title>
-    <script
-      src="https://kit.fontawesome.com/754b61fcf3.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/754b61fcf3.js" crossorigin="anonymous"></script>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        position: relative;
-        height: 100vh;
-        margin: 0;
-      }
-      .icon-container {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 300px;
-        margin: auto;
-        margin-top: 50px; /* Adjust top margin */
-      }
-      .icon {
-        font-size: 2rem;
-        transition: transform 0.3s ease-in-out;
-      }
-      .icon:hover {
-        cursor: pointer;
-        transform: scale(1.2);
-      }
-      .icon-container {
-        display: flex;
-        gap: 50px;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            position: relative;
+            height: 100vh;
+            margin: 0;
+        }
 
-      header {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: 2rem;
-        font-weight: bold;
-        z-index: 1;
-      }
-      footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-      }
+        .icon-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 300px;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        .icon {
+            font-size: 2rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .icon:hover {
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+
+        .icon-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .fan-controls,
+        .bulb-controls,
+        .led-controls,
+        .ac-controls {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .controls label {
+            display: block;
+            margin-bottom: 10px;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
-      <p>Hi user!</p>
+        <p>Hi user!</p>
     </header>
     <div class="icon-container">
-      <div class="icon fan">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/556/556878.png"
-          width="100"
-          height="100"
-        />
-      </div>
-      <div class="icon bulb">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/427/427735.png"
-          width="100"
-          height="100"
-        />
-      </div>
-      <div class="icon led">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/8534/8534359.png"
-          width="100"
-          height="100"
-        />
-      </div>
-      <div class="icon ac">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/911/911409.png"
-          width="100"
-          height="100"
-        />
-      </div>
+        <div class="icon fan" onclick="showFanControls()">
+            <img src="https://cdn-icons-png.flaticon.com/512/556/556878.png" width="100" height="100" />
+        </div>
+        <div class="icon bulb" onclick="showBulbControls()">
+            <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" width="100" height="100" />
+        </div>
+        <div class="icon led" onclick="showLedControls()">
+            <img src="https://cdn-icons-png.flaticon.com/512/8534/8534359.png" width="100" height="100" />
+        </div>
+        <div class="icon ac" onclick="showACControls()">
+            <img src="https://cdn-icons-png.flaticon.com/512/911/911409.png" width="100" height="100" />
+        </div>
+    </div>
+    <div class="fan-controls controls" id="fanControls">
+        <label>
+            <input type="checkbox" id="fanSwitch" onchange="toggleFan()" />
+            Turn On/Off
+        </label>
+        <label>
+            Fan Speed:
+            <input type="range" id="fanSpeed" min="0" max="5" onchange="setFanSpeed(this.value)" />
+        </label>
+    </div>
+    <div class="bulb-controls controls" id="bulbControls">
+        <label>
+            <input type="checkbox" id="bulbSwitch" onchange="toggleBulb()" />
+            Turn On/Off
+        </label>
+    </div>
+    <div class="led-controls controls" id="ledControls">
+        <label>
+            Click the LED bulb to change background color:
+            <input type="color" id="ledColorPicker" onchange="changeBackgroundColor(this.value)" />
+        </label>
     </div>
 
-    <!-- Footer -->
+    <div class="ac-controls controls" id="acControls">
+        <label>
+            <input type="checkbox" id="acSwitch" onchange="toggleAC()" />
+            Turn On/Off
+        </label>
+    </div>
     <footer>
-      <p>Developed by Team HackerHound. All rights reserved.</p>
+        <p>Developed by Team HackerHound. All rights reserved.</p>
     </footer>
+
     <script>
-        function updateFanSpeed(fanSpeed) {
-    const data = {
-        teamid: "GKSzNHE",
-        device: "fan",
-        value: fanSpeed.toString() 
-    };
 
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    };
+        //swastik ka code
 
-    const apiUrl = 'https://kodessphere-api.vercel.app/devices/'; 
-
-    fetch(apiUrl, options)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Response:', data);
-            // Handle the response data here
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Handle errors here
-        });
-}
-
-function updateBulbStatus(status) {
-   
-    if (status !== 0 && status !== 1) {
-        console.error('Invalid status. Status must be 0 or 1.');
-        return;
-    }
-
-    const data = {
-        teamid: "GKSzNHE",
-        device: "bulb",
-        value: status.toString() 
-    };
-
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    };
-
-    const apiUrl = 'https://kodessphere-api.vercel.app/devices/'; 
-
-    fetch(apiUrl, options)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Response:', data);
-           
-        })
-        .catch(error => {
-            console.error('Error:', error);
-           
-        });
-}
-function updateLed(hexValue) {
-    // Check if hexValue is a valid hexadecimal color value
-    if (!/^#([0-9A-F]{3}){1,2}$/i.test(hexValue)) {
-        console.error('Invalid hex value. Please provide a valid hexadecimal color value.');
-        return;
-    }
-
-    const data = {
-        teamid: "GKSzNHE",
-        device: "led",
-        value: hexValue // Hexadecimal color value
-    };
-
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    };
-
-    const apiUrl = 'https://kodessphere-api.vercel.app/devices/'; 
-
-    fetch(apiUrl, options)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Response:', data);
-            // Handle the response data here
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Handle errors here
-        });
-}
-
-function updateAC(temp, state) {
-    // Check if temperature is a valid number and state is either 0 or 1
-    if (typeof temp !== 'number' || !Number.isInteger(temp) || temp < 0 || temp > 100) {
-        console.error('Invalid temperature. Please provide a valid integer temperature value between 0 and 100.');
-        return;
-    }
-
-    if (state !== 0 && state !== 1) {
-        console.error('Invalid state. Please provide either 0 (off) or 1 (on).');
-        return;
-    }
-
-    const data = {
-        teamid: "GKSzNHE",
-        device: "AC",
-        value: {
-            temp: temp, // Temperature value
-            state: state // AC state (0 for off, 1 for on)
+        function showFanControls() {
+            hideAllControls();
+            const fanControls = document.getElementById("fanControls");
+            fanControls.style.display = "block";
         }
-    };
 
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    };
-
-    const apiUrl = 'https://kodessphere-api.vercel.app/devices/'; 
-
-    fetch(apiUrl, options)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+        function toggleFan() {
+            const fanSwitch = document.getElementById("fanSwitch");
+            if (fanSwitch.checked) {
+                alert("Fan turned on");
+            } else {
+                alert("Fan turned off");
             }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Response:', data);
-            
-        })
-        .catch(error => {
-            console.error('Error:', error);
-           
-        });
-}
+        }
+
+        function setFanSpeed(speed) {
+            alert("Fan speed set to " + speed);
+        }
+
+        function showBulbControls() {
+            hideAllControls();
+            const bulbControls = document.getElementById("bulbControls");
+            bulbControls.style.display = "block";
+        }
+
+        function toggleBulb() {
+            const bulbSwitch = document.getElementById("bulbSwitch");
+            if (bulbSwitch.checked) {
+                alert("Bulb turned on");
+            } else {
+                alert("Bulb turned off");
+            }
+        }
+
+        function showLedControls() {
+            hideAllControls();
+            const ledControls = document.getElementById("ledControls");
+            ledControls.style.display = "block";
+        }
+
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color;
+            alert("Background color changed to " + color);
+        }
+
+        function showACControls() {
+            hideAllControls();
+            const acControls = document.getElementById("acControls");
+            acControls.style.display = "block";
+        }
+
+        let acOn = false;
+
+        function toggleAC() {
+            const acSwitch = document.getElementById("acSwitch");
+            acOn = acSwitch.checked;
+            if (acOn) {
+                alert("AC turned on");
+                setTemperaturePrompt();
+            } else {
+                alert("AC turned off");
+            }
+        }
+        function setTemperaturePrompt() {
+            if (acOn) {
+                const temperature = prompt(
+                    "Please enter the desired temperature (between 16 and 30):"
+                );
+                if (temperature === null) {
+                    acOn = false;
+                    document.getElementById("acSwitch").checked = false;
+                    alert("AC turned off");
+                } else {
+                    const parsedTemperature = parseInt(temperature);
+                    if (
+                        isNaN(parsedTemperature) ||
+                        parsedTemperature < 16 ||
+                        parsedTemperature > 30
+                    ) {
+                        alert("Please enter a valid temperature between 16 and 30.");
+                        setTemperaturePrompt();
+                    } else {
+                        alert("Temperature set to " + parsedTemperature);
+                    }
+                }
+            }
+        }
+        function hideAllControls() {
+            const controls = document.querySelectorAll(".controls");
+            controls.forEach((control) => {
+                control.style.display = "none";
+            });
+        }
 
 
-updateAC(25, 1); 
+        // swastik ka code
+        function updateFanSpeed(fanSpeed) {
+            const data = {
+                teamid: "GKSzNHE",
+                device: "fan",
+                value: fanSpeed.toString()
+            };
 
-updateLed('#FF0000'); 
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+
+            const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+            fetch(apiUrl, options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Response:', data);
+                    // Handle the response data here
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Handle errors here
+                });
+        }
+
+        function updateBulbStatus(status) {
+
+            if (status !== 0 && status !== 1) {
+                console.error('Invalid status. Status must be 0 or 1.');
+                return;
+            }
+
+            const data = {
+                teamid: "GKSzNHE",
+                device: "bulb",
+                value: status.toString()
+            };
+
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+
+            const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+            fetch(apiUrl, options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Response:', data);
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+
+                });
+        }
+        function updateLed(hexValue) {
+            // Check if hexValue is a valid hexadecimal color value
+            if (!/^#([0-9A-F]{3}){1,2}$/i.test(hexValue)) {
+                console.error('Invalid hex value. Please provide a valid hexadecimal color value.');
+                return;
+            }
+
+            const data = {
+                teamid: "GKSzNHE",
+                device: "led",
+                value: hexValue // Hexadecimal color value
+            };
+
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+
+            const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+            fetch(apiUrl, options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Response:', data);
+                    // Handle the response data here
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Handle errors here
+                });
+        }
+
+        function updateAC(temp, state) {
+            // Check if temperature is a valid number and state is either 0 or 1
+            if (typeof temp !== 'number' || !Number.isInteger(temp) || temp < 0 || temp > 100) {
+                console.error('Invalid temperature. Please provide a valid integer temperature value between 0 and 100.');
+                return;
+            }
+
+            if (state !== 0 && state !== 1) {
+                console.error('Invalid state. Please provide either 0 (off) or 1 (on).');
+                return;
+            }
+
+            const data = {
+                teamid: "GKSzNHE",
+                device: "AC",
+                value: {
+                    temp: temp, // Temperature value
+                    state: state // AC state (0 for off, 1 for on)
+                }
+            };
+
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+
+            const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+            fetch(apiUrl, options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Response:', data);
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+
+                });
+        }
+
+
+        updateAC(25, 1);
+
+        updateLed('#FF0000');
 
 
 
-updateBulbStatus(1); 
+        updateBulbStatus(1);
 
 
-updateFanSpeed(2);
+        updateFanSpeed(2);
 
     </script>
-  </body>
+</body>
+
 </html>
