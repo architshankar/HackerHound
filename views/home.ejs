@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hover Enlarge Icons</title>
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+    <title>HomePage</title>
     <style>
         body {
             --dot-bg: black;
@@ -93,46 +94,50 @@
         .item1 {
             height: 57vh;
             background: rgba(255, 255, 255, 0.1);
-            /* Transparent white background for the glassmorphic effect */
             backdrop-filter: blur(10px);
-            /* Apply blur effect */
-            border-radius: 20px;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            /* Add shadow */
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-width: 3px;
+            border-style: solid;
+            border-image: linear-gradient(to bottom, red, rgba(138, 51, 253, 0.747)) 1;
         }
+
 
         .item2 {
             height: 70vh;
+            padding-top: 20px;
             margin-top: 15px;
             background: rgba(255, 255, 255, 0.1);
-            /* Transparent white background for the glassmorphic effect */
             backdrop-filter: blur(10px);
-            /* Apply blur effect */
-            border-radius: 20px;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            /* Add shadow */
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-
+            border-width: 3px;
+            border-style: solid;
+            border-image: linear-gradient(to bottom, red, rgba(138, 51, 253, 0.747)) 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
         }
+
 
         .item3 {
             height: 37vh;
             background: rgba(255, 255, 255, 0.1);
-            /* Transparent white background for the glassmorphic effect */
             backdrop-filter: blur(10px);
-            /* Apply blur effect */
-            border-radius: 20px;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            /* Add shadow */
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-width: 3px;
+            border-style: solid;
+            border-image-source: linear-gradient(to bottom, red, rgba(138, 51, 253, 0.747));
+            border-image-slice: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
 
         .item4 {
             display: flex;
@@ -140,22 +145,17 @@
             height: 90vh;
             padding: 10px;
             background-color: antiquewhite;
-            /* Set the height of the container to 90% of the viewport height */
             margin-top: 15px;
             justify-content: flex-end;
-            /* Align items to the bottom of the container */
             align-items: center;
-            /* Center items horizontally */
             background: rgba(255, 255, 255, 0.1);
-            /* Transparent white background for the glassmorphic effect */
             backdrop-filter: blur(10px);
-            /* Apply blur effect */
-            border-radius: 20px;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            /* Add shadow */
-            backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-width: 3px;
+            border-style: solid;
+            border-image-source: linear-gradient(to bottom, red, rgba(138, 51, 253, 0.747));
+            border-image-slice: 1;
         }
 
         .weatherInfo {
@@ -637,7 +637,7 @@
 
         input {
             display: block;
-            margin-bottom: 1.5em;
+
         }
 
         main {
@@ -735,11 +735,6 @@
             background-color: #0056b3;
         }
 
-        .item3container {
-            background-color: yellow;
-            /* Apply backdrop filter for blur effect */
-            backdrop-filter: blur(10px);
-        }
 
         .cardbulb {
             z-index: 99px;
@@ -775,24 +770,14 @@
             margin-right: 5px;
         }
 
-        .color-picker {
-            position: relative;
-        }
+        .colorpicker {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+            height: 80%;
 
-        .color-indicator {
-            display: inline-block;
-
-            width: 200px;
-            height: 400px;
-            background-color: #fff;
-            border-radius: 20px;
-            vertical-align: middle;
-        }
-
-        #color-picker {
-            display: inline-block;
-            vertical-align: middle;
-            margin-left: 40px;
         }
     </style>
 </head>
@@ -824,22 +809,10 @@
                 </div>
             </div>
             <div class="item2">
-                haskdfh
-                <div class="color-picker"></div>
-                <div id="color-indicator" class="color-picker">
-
+                <div class="colorpicker">
+                    <img src=" https://cdn-icons-png.flaticon.com/512/8534/8534359.png" width="300" height="300" alt="">
+                    <input type="color" id="colorPicker" height="200px">
                 </div>
-                <div class="color-picker"></div>
-                <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
-                <script>
-                    let colorIndicator = document.getElementById('color-indicator');
-                    const colorPicker = new iro.colorPicker("#color-picker", {
-                        width: 180, color: "#fff"
-                    });
-                    colorPicker.on('color:change', function (color) {
-                        colorIndicator.style.backgroundColor = color.hexString;
-                    })
-                </script>
             </div>
         </div>
         <div class="bento-flex2">
@@ -853,6 +826,9 @@
 
             </div>
             <div class="item4">
+                <div class="cloud">
+                    <img src="https://www.svgrepo.com/show/6207/clouds.svg" alt="cloud_image" height="200px">
+                </div>
                 <div class="weatherInfo">
                     <div class="wetherAdd">
                         <div class="city">
@@ -864,7 +840,7 @@
                     </div>
                     <div class="weatherMath">
                         <div class="cityTemp">
-                            26 C
+                            26°C
                         </div>
                     </div>
 
@@ -928,7 +904,6 @@
         </div>
     </div>
 
-
 </body>
 <script>
     // JavaScript code to handle temperature toggling
@@ -940,7 +915,7 @@
 
     function updateTemperature() {
         temperatureElement.textContent = currentTemperature + "°C";
-        updateAC(currentTemperature , 1);
+        updateAC(currentTemperature, 1);
     }
 
     increaseBtn.addEventListener("click", () => {
@@ -980,218 +955,207 @@
     });
 
 
-
-function showLedControls() {
-hideAllControls();
-const ledControls = document.getElementById("ledControls");
-ledControls.style.display = "block";
-}
-
-function changeBackgroundColor(color) {
-document.body.style.backgroundColor = color;
-alert("Background color changed to " + color);
-}
-
-
-// Function to update AC status on the backend
-function updateAC(temperature, state) {
-fetch('/updateAC', {
-method: 'POST',
-headers: {
-'Content-Type': 'application/json'
-},
-body: JSON.stringify({
-teamid: 'GKSzNHE',
-device: 'AC',
-value: {
-temp: temperature,
-state: state
-}
-})
-})
-.then(response => response.json())
-.then(data => {
-console.log(data);
-// Handle response from the backend if needed
-})
-.catch(error => {
-console.error('Error:', error);
-// Handle errors if any
-});
-}
-
-function hideAllControls() {
-const controls = document.querySelectorAll(".controls");
-controls.forEach((control) => {
-control.style.display = "none";
-});
-}
-
-
-// swastik ka code
-function updateFanSpeed(fanSpeed) {
-const data = {
-teamid: "GKSzNHE",
-device: "fan",
-value: fanSpeed.toString()
-};
-
-const options = {
-method: 'POST',
-headers: {
-'Content-Type': 'application/json'
-},
-body: JSON.stringify(data)
-};
-
-const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
-
-fetch(apiUrl, options)
-.then(response => {
-if (!response.ok) {
-throw new Error('Network response was not ok');
-}
-return response.json();
-})
-.then(data => {
-console.log('Response:', data);
-// Handle the response data here
-})
-.catch(error => {
-console.error('Error:', error);
-// Handle errors here
-});
-}
-
-function updateBulbStatus(status) {
-
-if (status !== 0 && status !== 1) {
-console.error('Invalid status. Status must be 0 or 1.');
-return;
-}
-
-const data = {
-teamid: "GKSzNHE",
-device: "bulb",
-value: status.toString()
-};
-
-const options = {
-method: 'POST',
-headers: {
-'Content-Type': 'application/json'
-},
-body: JSON.stringify(data)
-};
-
-const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
-
-fetch(apiUrl, options)
-.then(response => {
-if (!response.ok) {
-throw new Error('Network response was not ok');
-}
-return response.json();
-})
-.then(data => {
-console.log('Response:', data);
-
-})
-.catch(error => {
-console.error('Error:', error);
-
-});
-}
-function updateLed(hexValue) {
-// Check if hexValue is a valid hexadecimal color value
-if (!/^#([0-9A-F]{3}){1,2}$/i.test(hexValue)) {
-console.error('Invalid hex value. Please provide a valid hexadecimal color value.');
-return;
-}
-
-const data = {
-teamid: "GKSzNHE",
-device: "led",
-value: hexValue // Hexadecimal color value
-};
-
-const options = {
-method: 'POST',
-headers: {
-'Content-Type': 'application/json'
-},
-body: JSON.stringify(data)
-};
-
-const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
-
-fetch(apiUrl, options)
-.then(response => {
-if (!response.ok) {
-throw new Error('Network response was not ok');
-}
-return response.json();
-})
-.then(data => {
-console.log('Response:', data);
-// Handle the response data here
-})
-.catch(error => {
-console.error('Error:', error);
-// Handle errors here
-});
-}
-
-function updateAC(temp, state) {
-// Check if temperature is a valid number and state is either 0 or 1
-if (typeof temp !== 'number' || !Number.isInteger(temp) || temp < 0 || temp> 100) {
-    console.error('Invalid temperature. Please provide a valid integer temperature value between 0 and 100.');
-    return;
-    }
-
-    if (state !== 0 && state !== 1) {
-    console.error('Invalid state. Please provide either 0 (off) or 1 (on).');
-    return;
-    }
-
-    const data = {
-    teamid: "GKSzNHE",
-    device: "AC",
-    value: {
-    temp: temp, // Temperature value
-    state: state // AC state (0 for off, 1 for on)
-    }
-    };
-
-    const options = {
-    method: 'POST',
-    headers: {
-    'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-    };
-
-    const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
-
-    fetch(apiUrl, options)
-    .then(response => {
-    if (!response.ok) {
-    throw new Error('Network response was not ok');
-    }
-    return response.json();
-    })
-    .then(data => {
-    console.log('Response:', data);
-
-    })
-    .catch(error => {
-    console.error('Error:', error);
+    document.getElementById('colorPicker').addEventListener('input', function () {
+        // Get the selected color value (hex format)
+        const selectedColor = this.value;
+        updateLed(selectedColor);
 
     });
+
+    // Function to update AC status on the backend
+    function updateAC(temperature, state) {
+        fetch('/updateAC', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                teamid: 'GKSzNHE',
+                device: 'AC',
+                value: {
+                    temp: temperature,
+                    state: state
+                }
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // Handle response from the backend if needed
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors if any
+            });
     }
 
 
-    </script>
-    </body>
+
+
+    // swastik ka code
+    function updateFanSpeed(fanSpeed) {
+        const data = {
+            teamid: "GKSzNHE",
+            device: "fan",
+            value: fanSpeed.toString()
+        };
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+        fetch(apiUrl, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response:', data);
+                // Handle the response data here
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors here
+            });
+    }
+
+    function updateBulbStatus(status) {
+
+        if (status !== 0 && status !== 1) {
+            console.error('Invalid status. Status must be 0 or 1.');
+            return;
+        }
+
+        const data = {
+            teamid: "GKSzNHE",
+            device: "bulb",
+            value: status.toString()
+        };
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+        fetch(apiUrl, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response:', data);
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+
+            });
+    }
+    function updateLed(hexValue) {
+        // Check if hexValue is a valid hexadecimal color value
+        if (!/^#([0-9A-F]{3}){1,2}$/i.test(hexValue)) {
+            console.error('Invalid hex value. Please provide a valid hexadecimal color value.');
+            return;
+        }
+
+        const data = {
+            teamid: "GKSzNHE",
+            device: "led",
+            value: hexValue // Hexadecimal color value
+        };
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+        fetch(apiUrl, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response:', data);
+                // Handle the response data here
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors here
+            });
+    }
+
+    function updateAC(temp, state) {
+        // Check if temperature is a valid number and state is either 0 or 1
+        if (typeof temp !== 'number' || !Number.isInteger(temp) || temp < 0 || temp > 100) {
+            console.error('Invalid temperature. Please provide a valid integer temperature value between 0 and 100.');
+            return;
+        }
+
+        if (state !== 0 && state !== 1) {
+            console.error('Invalid state. Please provide either 0 (off) or 1 (on).');
+            return;
+        }
+
+        const data = {
+            teamid: "GKSzNHE",
+            device: "AC",
+            value: {
+                temp: temp, // Temperature value
+                state: state // AC state (0 for off, 1 for on)
+            }
+        };
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const apiUrl = 'https://kodessphere-api.vercel.app/devices/';
+
+        fetch(apiUrl, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response:', data);
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+
+            });
+    }
+
+
+</script>
+</body>
 
 </html>
